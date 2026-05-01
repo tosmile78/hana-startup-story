@@ -1,0 +1,68 @@
+@import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css');
+
+:root {
+  --hana-primary: #00B3A8;
+  --hana-primary-dark: #009188;
+  --hana-primary-light: #E6F7F6;
+  --hana-primary-text: #007A72;
+  --hana-accent-pink: #FF4D6A;
+  --hana-accent-blue: #4A90D9;
+  --hana-accent-purple: #B39DDB;
+  --bg-hero: linear-gradient(180deg, #C9D4F0 0%, #DFD9F0 50%, #E8DFF5 100%);
+  --bg-page: #F2F2F7;
+  --bg-card: #FFFFFF;
+  --bg-section: #F8F8F8;
+  --bg-hero-product: linear-gradient(135deg, #E8F5F4 0%, #F0FAF9 100%);
+  --text-primary: #1A1A1A;
+  --text-secondary: #4A4A4A;
+  --text-tertiary: #8E8E93;
+  --text-disabled: #C7C7CC;
+  --text-primary-on: #FFFFFF;
+  --text-teal: #00B3A8;
+  --text-pink: #FF4D6A;
+  --border-card: rgba(0, 0, 0, 0.06);
+  --border-default: #E5E5EA;
+  --border-primary: #00B3A8;
+  --divider: #F2F2F7;
+  --color-positive: #00B3A8;
+  --color-negative: #FF3B30;
+  --color-warning: #FF9500;
+  --color-info: #007AFF;
+  --font-family: 'Pretendard', 'Apple SD Gothic Neo', -apple-system, sans-serif;
+  --font-sans: var(--font-family);
+  --radius-card: 16px;
+  --radius-card-sm: 12px;
+  --radius-pill: 50px;
+  --shadow-card: 0 2px 8px rgba(0, 0, 0, 0.06);
+  --shadow-card-lg: 0 4px 16px rgba(0, 0, 0, 0.08);
+
+  /* Compatibility aliases for existing styles */
+  --color-primary: var(--hana-primary);
+  --color-primary-strong: var(--hana-primary-dark);
+  --color-surface: var(--bg-card);
+  --color-surface-muted: var(--bg-section);
+  --color-border: var(--border-default);
+  --color-text: var(--text-primary);
+  --color-text-muted: var(--text-tertiary);
+  --accent: var(--hana-primary);
+  --accent-bg: rgba(0, 179, 168, 0.12);
+  --accent-border: rgba(0, 179, 168, 0.24);
+  --social-bg: rgba(244, 243, 236, 0.5);
+  --shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+}
+
+html {
+  font-family: var(--font-sans);
+  color: var(--text-primary);
+  background: var(--bg-page);
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: var(--bg-page);
+}
+
+* {
+  box-sizing: border-box;
+}
