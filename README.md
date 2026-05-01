@@ -1,16 +1,88 @@
-# React + Vite
+# 하나 스타트업 스토리 v1.0.0
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+하나성장지원센터 · 하나원큐 애자일랩과 함께한 스타트업들의 창업 이야기를 소개하는 홍보 웹사이트.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## 개요
 
-## React Compiler
+| 항목 | 내용 |
+|------|------|
+| 주관 | 하나성장지원센터 / 하나원큐 애자일랩 |
+| 대상 | 협력 스타트업 10개사 |
+| 목적 | 창업 스토리·성과·하나은행 협업 사례 홍보 |
+| 버전 | v1.0.0 (2026.05) |
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+---
 
-## Expanding the ESLint configuration
+## 스타트업 목록
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+| 기업 | 분야 | 기수 |
+|------|------|------|
+| 두나무 | 블록체인·핀테크 | 초기 파트너사 |
+| 업스테이지 | AI | 16기 |
+| 뤼튼 | AI·플랫폼 | 초기 파트너사 |
+| 파운트 | 핀테크·AI | 초기 파트너사 |
+| 자란다 | 에듀테크·플랫폼 | 초기 파트너사 |
+| 창톡 | 플랫폼·소상공인 | 15기 |
+| 페이워크 | 핀테크·플랫폼 | 15기 |
+| 모노랩스 | 플랫폼·AI | 16기 |
+| 공부선배 | 에듀테크·플랫폼 | 16기 |
+| 글로우서울 | 핀테크·플랫폼 | 16기 |
+
+---
+
+## 페이지 구조
+
+```
+/              홈 — 히어로 + 필터 탭 + 스타트업 카드 그리드
+/startups      뉴스·콘텐츠 피드
+/startups/:id  스타트업 상세 — 창업 스토리·인터뷰·협업·성과 수치
+```
+
+---
+
+## 프로젝트 구조
+
+```
+src/
+├── components/
+│   ├── TopBar.jsx        상단 네비게이션 바
+│   ├── BottomNav.jsx     바텀 탭 네비게이션
+│   ├── Navigation.jsx    공통 네비게이션
+│   └── StartupCard.jsx   스타트업 카드 컴포넌트
+├── pages/
+│   ├── Home.jsx          홈 (히어로·필터·카드 그리드)
+│   ├── Startups.jsx      뉴스·콘텐츠 피드
+│   └── StartupDetail.jsx 스타트업 상세 페이지
+├── data/
+│   └── startups.js       10개 스타트업 정적 데이터
+└── styles/
+    └── tokens.css        하나원큐 디자인 시스템 CSS 변수
+```
+
+---
+
+## 기술 스택
+
+- **React 18** + **Vite**
+- **Tailwind CSS** (하나원큐 디자인 토큰 커스텀)
+- **React Router v6**
+- 폰트: Pretendard
+- 이미지: Unsplash Source API
+
+---
+
+## 로컬 실행
+
+```bash
+npm install
+npm run dev
+```
+
+---
+
+## 디자인 시스템
+
+`DESIGN_SYSTEM.md` 및 `src/styles/tokens.css` 참조.
+Primary 컬러 `#00B3A8` 는 CTA·강조 수치·액티브 상태에만 사용.
