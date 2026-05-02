@@ -54,57 +54,42 @@ function Home() {
         </div>
       </div>
 
-      {/* 카드 그리드 */}
-      <div className="max-w-7xl mx-auto px-4 py-8">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      {/* 카드 리스트 */}
+      <div className="max-w-3xl mx-auto px-4 py-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
           {filtered.map((startup) => (
             <Link
               key={startup.id}
               to={`/startups/${startup.id}`}
-              className="group"
             >
-              <div className="h-full bg-card rounded-radius-card border border-border-card shadow-card overflow-hidden transition-all duration-300 hover:shadow-card-lg hover:-translate-y-1">
-                {/* 썸네일 이미지 */}
-                <div className="h-48 bg-tertiary overflow-hidden">
+              <article className="flex items-center gap-4 rounded-card-sm bg-card py-[18px] px-5 shadow-card border border-divider transition-all duration-100 hover:shadow-cardLg active:scale-[0.98]">
+                {/* 썸네일 60×60 */}
+                <div className="h-[60px] w-[60px] shrink-0 rounded-[8px] overflow-hidden bg-hanaGray-100">
                   <img
                     src={startup.thumbnailUrl}
                     alt={startup.name}
                     loading="lazy"
-                    className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+                    className="h-full w-full object-cover"
                   />
                 </div>
 
-                {/* 컨텐츠 */}
-                <div className="p-5">
-                  {/* 태그 */}
-                  <div className="flex flex-wrap gap-2 mb-3">
+                {/* 정보 */}
+                <div className="flex-1 min-w-0">
+                  <div className="flex items-center gap-2 mb-0.5">
+                    <p className="text-[15px] font-semibold text-primary truncate">{startup.name}</p>
+                    <span className="shrink-0 text-[11px] font-semibold text-hana">{startup.cohort}</span>
+                  </div>
+                  <p className="text-[13px] text-tertiary truncate mb-1.5">{startup.oneLiner}</p>
+                  <div className="flex gap-2">
                     {startup.tags.map((tag) => (
-                      <span
-                        key={tag}
-                        className="inline-block px-3 py-1 bg-hana/10 text-hana text-xs font-medium rounded-full"
-                      >
-                        {tag}
-                      </span>
+                      <span key={tag} className="text-[12px] text-tertiary">#{tag}</span>
                     ))}
                   </div>
-
-                  {/* 회사명 */}
-                  <h3 className="text-lg font-bold text-primary mb-1">
-                    {startup.name}
-                  </h3>
-
-                  {/* One-liner */}
-                  <p className="text-sm text-secondary line-clamp-2 mb-4">
-                    {startup.oneLiner}
-                  </p>
-
-                  {/* 더보기 링크 */}
-                  <div className="flex items-center text-hana font-medium text-sm group-hover:gap-2 transition-all duration-300">
-                    <span>자세히 보기</span>
-                    <span className="text-lg">→</span>
-                  </div>
                 </div>
-              </div>
+
+                {/* 화살표 */}
+                <span className="text-xl text-tertiary shrink-0">›</span>
+              </article>
             </Link>
           ))}
         </div>
