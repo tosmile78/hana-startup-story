@@ -118,6 +118,23 @@ function Home() {
           </div>
         )}
       </div>
+
+      {/* 디자인 시스템 플로팅 버튼 */}
+      <Link
+        to="/design-system"
+        className="fixed bottom-28 right-4 z-40 flex items-center gap-2 rounded-pill bg-hanaGray-900 px-4 py-2.5 shadow-cardLg transition-all hover:bg-hanaGray-800 active:scale-95"
+        title="디자인 시스템"
+      >
+        <svg viewBox="0 0 24 24" className="h-4 w-4 shrink-0 text-white" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+          <circle cx="12" cy="12" r="3" />
+          <circle cx="12" cy="12" r="8" strokeDasharray="3 2" />
+          <line x1="12" y1="2" x2="12" y2="4" />
+          <line x1="12" y1="20" x2="12" y2="22" />
+          <line x1="2" y1="12" x2="4" y2="12" />
+          <line x1="20" y1="12" x2="22" y2="12" />
+        </svg>
+        <span className="text-[13px] font-semibold text-white whitespace-nowrap">디자인 시스템</span>
+      </Link>
     </div>
   );
 }
