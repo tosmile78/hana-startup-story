@@ -56,13 +56,16 @@ function Home() {
 
       {/* 카드 리스트 */}
       <div className="max-w-3xl mx-auto px-4 py-6">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
-          {filtered.map((startup) => (
+        <div key={activeTag} className="grid grid-cols-1 md:grid-cols-2 gap-3">
+          {filtered.map((startup, index) => (
             <Link
               key={startup.id}
               to={`/startups/${startup.id}`}
             >
-              <article className="flex items-center gap-4 rounded-card-sm bg-card py-[18px] px-5 shadow-card border border-divider transition-all duration-100 hover:shadow-cardLg active:scale-[0.98]">
+              <article
+                className="flex items-center gap-4 rounded-card-sm bg-card py-[18px] px-5 shadow-card border border-divider hover:shadow-cardLg active:scale-[0.98] animate-slideUpFade"
+                style={{ animationDelay: `${index * 60}ms` }}
+              >
                 {/* 썸네일 60×60 */}
                 <div className="h-[60px] w-[60px] shrink-0 rounded-[8px] overflow-hidden bg-hanaGray-100">
                   <img

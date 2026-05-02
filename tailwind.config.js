@@ -59,6 +59,15 @@ export default {
       fontFamily: {
         sans: ['var(--font-sans)'],
       },
+      keyframes: {
+        slideUpFade: {
+          '0%':   { opacity: '0', transform: 'translateY(20px)' },
+          '100%': { opacity: '1', transform: 'translateY(0)' },
+        },
+      },
+      animation: {
+        slideUpFade: 'slideUpFade 0.32s ease both',
+      },
     },
   },
   plugins: [],
