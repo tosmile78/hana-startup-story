@@ -4,6 +4,8 @@ export default {
   theme: {
     extend: {
       colors: {
+        hana: 'var(--hana-primary)',        /* bg-hana, text-hana, border-hana 호환 */
+        hanaA10: 'var(--hana-primary-a10)', /* bg-hana/10 대체 */
         primary: 'var(--hana-primary)',
         'primary-strong': 'var(--hana-primary-dark)',
         primaryDark: 'var(--hana-primary-dark)',
@@ -73,6 +75,9 @@ export default {
       },
       animation: {
         slideUpFade: 'slideUpFade 0.32s ease both',
+      },
+      backgroundImage: {
+        'hero-overlay': 'var(--overlay-hero)',
       },
     },
   },

@@ -1,21 +1,12 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { startups } from "../data/startups";
+import { tagColors, tagChipClass } from "../data/tagColors";
+
+const ALL_TAGS = ["전체", "핀테크", "AI", "블록체인", "에듀테크", "플랫폼", "소상공인"];
 
 function Home() {
   const [activeTag, setActiveTag] = useState("전체");
-
-  const allTags = ["전체", "핀테크", "AI", "블록체인", "에듀테크", "플랫폼", "소상공인"];
-
-  const tagColors = {
-    '전체':    { on: 'bg-primary text-white',              off: 'bg-primaryLight text-primaryText' },
-    '핀테크':  { on: 'bg-accentBlue text-white',           off: 'bg-accentBlueLt text-accentBlue' },
-    'AI':      { on: 'bg-accentPurpleDk text-white',       off: 'bg-accentPurpleLt text-accentPurpleDk' },
-    '블록체인': { on: 'bg-hanaGray-900 text-white',         off: 'bg-hanaGray-100 text-hanaGray-600' },
-    '에듀테크': { on: 'bg-warning text-hanaGray-900',       off: 'bg-warningLt text-warning' },
-    '플랫폼':  { on: 'bg-info text-white',                 off: 'bg-infoLt text-info' },
-    '소상공인': { on: 'bg-accentPink text-white',           off: 'bg-accentPinkLt text-accentPink' },
-  };
 
   const filtered = activeTag === "전체"
     ? startups
@@ -28,13 +19,10 @@ function Home() {
         className="relative h-[32vh] md:h-[35vh] w-full bg-cover bg-center bg-no-repeat flex items-center justify-center overflow-hidden"
         style={{
           backgroundImage: "url('https://images.unsplash.com/photo-1552664730-d307ca884978?w=1200&q=80')",
-          backgroundAttachment: "fixed"
+          backgroundAttachment: "fixed",
         }}
       >
-        {/* 오버레이 */}
-        <div className="absolute inset-0 bg-gradient-to-r from-hana/70 to-hana/50"></div>
-
-        {/* 텍스트 */}
+        <div className="absolute inset-0 bg-hero-overlay" />
         <div className="relative z-10 text-center px-6">
           <h1 className="text-3xl md:text-4xl font-bold text-white mb-2">
             청년과 창업의 이야기
@@ -45,16 +33,14 @@ function Home() {
         </div>
       </div>
 
-      {/* 필터 탭 */}
-      <div className="sticky top-20 z-20 bg-page/95 backdrop-blur border-b border-border-default">
-        <div className="max-w-7xl mx-auto px-4 py-3 flex overflow-x-auto gap-2 md:gap-3">
-          {allTags.map((tag) => (
+      {/* 필터 탭 — flex-wrap으로 줄바꿈 */}
+      <div className="sticky top-20 z-20 bg-page/95 backdrop-blur border-b border-border">
+        <div className="max-w-3xl mx-auto px-4 py-3 flex flex-wrap gap-2">
+          {ALL_TAGS.map((tag) => (
             <button
               key={tag}
               onClick={() => setActiveTag(tag)}
-              className={`px-[18px] py-2 rounded-pill text-[15px] font-semibold whitespace-nowrap transition-all duration-200 ${
-                activeTag === tag ? tagColors[tag].on : tagColors[tag].off
-              }`}
+              className={`px-[18px] py-2 rounded-pill text-[15px] font-semibold transition-all duration-200 ${tagChipClass(tag, activeTag === tag)}`}
             >
               {tag}
             </button>
@@ -66,12 +52,9 @@ function Home() {
       <div className="max-w-3xl mx-auto px-4 py-6">
         <div key={activeTag} className="grid grid-cols-1 md:grid-cols-2 gap-3">
           {filtered.map((startup, index) => (
-            <Link
-              key={startup.id}
-              to={`/startups/${startup.id}`}
-            >
+            <Link key={startup.id} to={`/startups/${startup.id}`}>
               <article
-                className="flex items-center gap-4 rounded-card-sm bg-card py-[18px] px-5 shadow-card border border-divider hover:shadow-cardLg active:scale-[0.98] animate-slideUpFade"
+                className="flex items-center gap-4 rounded-cardSm bg-card py-[18px] px-5 shadow-card border border-divider hover:shadow-cardLg active:scale-[0.98] animate-slideUpFade"
                 style={{ animationDelay: `${index * 60}ms` }}
               >
                 {/* 썸네일 60×60 */}
@@ -90,10 +73,16 @@ function Home() {
                     <p className="text-[15px] font-semibold text-primary truncate">{startup.name}</p>
                     <span className="shrink-0 text-[11px] font-semibold text-hana">{startup.cohort}</span>
                   </div>
-                  <p className="text-[13px] text-tertiary truncate mb-1.5">{startup.oneLiner}</p>
-                  <div className="flex gap-2">
+                  <p className="text-[13px] text-tertiary truncate mb-2">{startup.oneLiner}</p>
+                  {/* 태그 칩 — tagColors.off 적용 */}
+                  <div className="flex flex-wrap gap-1.5">
                     {startup.tags.map((tag) => (
-                      <span key={tag} className="text-[12px] text-tertiary">#{tag}</span>
+                      <span
+                        key={tag}
+                        className={`text-[11px] font-semibold px-2 py-0.5 rounded-full ${tagColors[tag]?.off ?? 'bg-hanaGray-100 text-hanaGray-600'}`}
+                      >
+                        {tag}
+                      </span>
                     ))}
                   </div>
                 </div>
@@ -105,12 +94,9 @@ function Home() {
           ))}
         </div>
 
-        {/* 결과 없음 상태 */}
         {filtered.length === 0 && (
           <div className="text-center py-12">
-            <p className="text-tertiary text-lg">
-              "{activeTag}" 카테고리에 맞는 스타트업이 없습니다.
-            </p>
+            <p className="text-tertiary text-lg">"{activeTag}" 카테고리에 맞는 스타트업이 없습니다.</p>
           </div>
         )}
       </div>

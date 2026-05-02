@@ -1,10 +1,12 @@
 @import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css');
 
 :root {
-  --hana-primary: #00B3A8;
-  --hana-primary-dark: #009188;
-  --hana-primary-light: #E6F7F6;
-  --hana-primary-text: #007A72;
+  --hana-primary:        #00B3A8;
+  --hana-primary-dark:   #009188;
+  --hana-primary-light:  #E6F7F6;
+  --hana-primary-text:   #007A72;
+  --hana-primary-a10:    rgba(0, 179, 168, 0.10);  /* bg-hana/10 대체 */
+  --overlay-hero:        linear-gradient(to right, rgba(0, 179, 168, 0.70), rgba(0, 179, 168, 0.50));
   --hana-accent-pink:         #FF4D6A;
   --hana-accent-pink-light:   #FFF0F2;
   --hana-accent-blue:         #4A90D9;
