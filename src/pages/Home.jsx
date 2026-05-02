@@ -7,6 +7,16 @@ function Home() {
 
   const allTags = ["전체", "핀테크", "AI", "블록체인", "에듀테크", "플랫폼", "소상공인"];
 
+  const tagColors = {
+    '전체':    { on: 'bg-primary text-white',              off: 'bg-primaryLight text-primaryText' },
+    '핀테크':  { on: 'bg-accentBlue text-white',           off: 'bg-accentBlueLt text-accentBlue' },
+    'AI':      { on: 'bg-accentPurpleDk text-white',       off: 'bg-accentPurpleLt text-accentPurpleDk' },
+    '블록체인': { on: 'bg-hanaGray-900 text-white',         off: 'bg-hanaGray-100 text-hanaGray-600' },
+    '에듀테크': { on: 'bg-warning text-hanaGray-900',       off: 'bg-warningLt text-warning' },
+    '플랫폼':  { on: 'bg-info text-white',                 off: 'bg-infoLt text-info' },
+    '소상공인': { on: 'bg-accentPink text-white',           off: 'bg-accentPinkLt text-accentPink' },
+  };
+
   const filtered = activeTag === "전체"
     ? startups
     : startups.filter(s => s.tags.includes(activeTag));
@@ -43,9 +53,7 @@ function Home() {
               key={tag}
               onClick={() => setActiveTag(tag)}
               className={`px-[18px] py-2 rounded-pill text-[15px] font-semibold whitespace-nowrap transition-all duration-200 ${
-                activeTag === tag
-                  ? "bg-hanaGray-900 text-white"
-                  : "bg-hanaGray-100 text-hanaGray-800 hover:bg-hanaGray-200"
+                activeTag === tag ? tagColors[tag].on : tagColors[tag].off
               }`}
             >
               {tag}
